@@ -1,0 +1,42 @@
+<style>
+    .red{
+          border: solid red 1px;
+     }
+    .green{
+          border: solid green 1px;
+     }
+</style>
+<form>
+    <textarea id="t1"></textarea>
+    <textarea id="t2"></textarea>
+    <textarea id="t3"></textarea>
+    <input type="submit" onclick="return validar();">
+</form>
+<script>
+function validar(){
+     var t1 = document.getElementById("t1");
+     var t2 = document.getElementById("t3");
+     var t3 = document.getElementById("t2");
+     if (isdigit(t1.value)){
+          t1.classList.add("green");
+     }else{
+          t1.classList.add("red");
+     }
+     if (isdigit(t3.value)){
+          t3.classList.add("green");
+     }else{
+          t3.classList.add("red");
+     }
+     if (isdigit(t2.value)){
+          t2.classList.add("green");
+     }else{
+          t2.classList.add("red");
+     }
+     return false;
+}
+
+function isdigit(val){
+  console.log();
+   return !isNaN(parseInt(val)) ;
+}
+</script>
