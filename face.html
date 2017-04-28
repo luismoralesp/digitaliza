@@ -21,9 +21,9 @@
 			FB.login(function(response){
 			  // Handle the response object, like in statusChangeCallback() in our demo
 			  // code.
-			});
-			FB.api(
-			    "/1264564703651133/feed",
+			  console.log(response);
+			  FB.api(
+			    "/1264564703651133/feed?access",
 			    "POST",
 			    {
 			        "message": "This is a test message"
@@ -34,6 +34,8 @@
 			      }
 			    }
 			);
+			});
+			
 		  };
 
 		  (function(d, s, id){
