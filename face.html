@@ -18,11 +18,13 @@
 			  method: 'share',
 			  href: 'https://developers.facebook.com/docs/'
 			}, function(response){});*/
-			FB.login(function(response){
+			/*FB.login(function(response){
 			  // Handle the response object, like in statusChangeCallback() in our demo
 			  // code.
 			  console.log(response);
-			  FB.api(
+			  
+			});*/
+			FB.api(
 			    "/1264564703651133/feed?accessToken="+response.authResponse.accessToken,
 			    "POST",
 
@@ -32,8 +34,6 @@
 			      }
 			    }
 			);
-			});
-			
 		  };
 
 		  (function(d, s, id){
