@@ -2,45 +2,19 @@
 <html>
 	<head>
 		<title>Face</title>
+		<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
 	</head>
 	<body>
 		<h1>Face</h1>
-		<script>
-		  window.fbAsyncInit = function() {
-		    FB.init({
-		      appId      : '210328502779207',
-		      xfbml      : true,
-		      version    : 'v2.8'
-		    });
-		    FB.AppEvents.logPageView();
-			/*FB.ui(
-			 {
-			  method: 'share',
-			  href: 'https://developers.facebook.com/docs/'
-			}, function(response){});*/
-			/*FB.login(function(response){
-			  // Handle the response object, like in statusChangeCallback() in our demo
-			  // code.
-			  console.log(response);
-			  
-			});*/
-			FB.api(
-			    "/1264564703651133/feed",
+		<script> 
+			var FEED = "https://graph.facebook.com/v2.9/1666922890269999/feed?fields=attachments&access_token=EAACEdEose0cBAIDRX7jhBN9HVffJw7udQj80IncEpY330ERcWrbVl7Q1wdddZBli16WlacSInjTyhERSRhCIPCYuan5eDqns1DAbR2ApY61tmhNrwUQPCJNFexSGZASAE1aUNFF8z7NQZAOTqRQtOY8MPiKGHBaf98TME4tB0Bf5ZADc0xNYmWnLbeAZBqu8ZD&debug=all&format=json&method=get&pretty=0&suppress_http_code=1";
 
-			    function (response) {
-			        console.log(response);
-			      if (response && !response.error) {
-			      }
-			    }
-			);
-		  };
-
-		  (function(d, s, id){
-		     var js, fjs = d.getElementsByTagName(s)[0];
-		     if (d.getElementById(id)) {return;}
-		     js = d.createElement(s); js.id = id;
-		     js.src = "//connect.facebook.net/en_US/sdk.js";
-		     fjs.parentNode.insertBefore(js, fjs);
-		   }(document, 'script', 'facebook-jssdk'));</script>
+			$.ajax({
+				url : FEED,
+				success: function (data) {
+					console.log(data);
+				}
+			});
+		</script>
 	</body>
 </html>
