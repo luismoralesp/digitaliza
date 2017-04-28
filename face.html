@@ -25,9 +25,7 @@
 			  FB.api(
 			    "/1264564703651133/feed?accessToken="+response.authResponse.accessToken,
 			    "POST",
-			    {
-			        "message": "This is a test message"
-			    },
+
 			    function (response) {
 			        console.log(response);
 			      if (response && !response.error) {
