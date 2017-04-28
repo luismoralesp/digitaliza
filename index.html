@@ -8,9 +8,101 @@
 	
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/responsive.css">
-
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.x-git.js"></script>
 </head>
 <body>
+<!--script type="text/javascript">
+	/**/
+	/*$.ajax({
+		data: {
+			token: 'xoxp-29328321841-29429852240-141516874594-1c8823eb92b8ae907c171516cb47f2f3',
+			text: 'hola',
+			query: 'in:random'
+		},
+		url: 'https://slack.com/api/search.messages',
+		method: 'post'
+	});	*/
+	$.ajax({
+		data: {
+			token: 'xoxp-29328321841-29429852240-141516874594-1c8823eb92b8ae907c171516cb47f2f3',
+		},
+		url: 'https://slack.com/api/rtm.start',
+		method: 'post',
+		'type': 'JSON',
+		success: function (data){
+			WebSocketTest(data.url);
+		}
+	});
+
+     function WebSocketTest(url){
+        if ("WebSocket" in window)
+        {
+           console.log("WebSocket is supported by your Browser!");
+           
+           // Let us open a web socket
+           var ws = new WebSocket(url);
+			
+           ws.onopen = function()
+           {
+              // Web Socket is connected, send data using send()
+              /*ws.send({
+				    "type": "message",
+				    "channel": "random"
+				});*/
+              console.log("Message is sent...");
+           };
+			
+           ws.onmessage = function (evt) 
+           { 
+              var received_msg = JSON.parse(evt.data);
+              if (received_msg.type=='message'){
+              	console.log(received_msg);
+              	document.getElementById("messages").innerHTML += "<li>" + received_msg.user + ": "+ received_msg.text + "</li>"
+              }
+           };
+			
+           ws.onclose = function()
+           { 
+              // websocket is closed.
+              console.log("Connection is closed..."); 
+              /*window.setTimeout(function (){
+              	WebSocketTest(url)
+              }, 100);*/
+              
+           };
+        }
+        
+        else
+        {
+           // The browser doesn't support WebSocket
+           console.log("WebSocket NOT supported by your Browser!");
+        }
+     }
+     function send(text){
+     	$.ajax({
+			data: {
+				token: 'xoxp-29328321841-29429852240-141516874594-1c8823eb92b8ae907c171516cb47f2f3',
+				text: text,
+				channel: 'random'
+			},
+			url: 'https://slack.com/api/chat.postMessage',
+			method: 'post'
+		});
+     }
+     function runScript(e, self) {
+	    if (e.keyCode == 13) {
+	        send(self.value);
+	        self.value = "";
+	        return false;
+	    }
+	}
+</script>
+<ul id="messages">
+	
+</ul>
+<textarea onkeypress="runScript(event, this)">
+	
+</textarea-->
 
 <section id="top-bar">
 	<div class="auto-container clearfix">
@@ -172,7 +264,7 @@
 		      				</div>
 		      				<div class="digital-banner-p" data-animation="animated fadeInDown">We use enterprise strategies to boost your local and worldwide search rankings<br>so your customers can find you when & where they need</div>
 		      				<a href="services.html" class="btn btn-default banner-btn" data-animation="animated zoomIn">Learn More</a> <br>
-		      				<img data-animation="animated fadeInUp" src="img/slider/mockup.png"  alt="Awesome Image"/>
+		      				
 	      				</div>
 	      			</div>
 	      		</div>
