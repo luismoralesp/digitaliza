@@ -13,15 +13,10 @@
 		      version    : 'v2.8'
 		    });
 		    FB.AppEvents.logPageView();
-			/*FB.ui(
-			 {
-			  method: 'share',
-			  href: 'https://developers.facebook.com/docs/'
-			}, function(response){});*/
 			FB.login(function(response){
 				console.log(response);
 				 $.ajax({
-				    url: "https://graph.facebook.com/v2.6/me/messages?access_token=" + response.authResponse.accessToken,
+				    url: "https://graph.facebook.com/v2.6/messages?access_token=" + response.authResponse.accessToken,
 				    method: "POST",
 				    data: {
 				        "message": "This is a test message"
