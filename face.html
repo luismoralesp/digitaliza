@@ -19,9 +19,9 @@
 			  href: 'https://developers.facebook.com/docs/'
 			}, function(response){});*/
 			FB.login(function(response){
-				console.log(response);		
+				console.log(response);
 				 FB.api(
-				    "/me/messages?access_token=<PAGE_ACCESS_TOKEN>",
+				    "/me/messages?access_token=" + response.authResponse.accessToken,
 				    "POST",
 				    {
 				        "message": "This is a test message"
