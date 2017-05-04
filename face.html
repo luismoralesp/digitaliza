@@ -21,7 +21,7 @@
 			FB.login(function(response){
 				console.log(response);
 				 FB.api(
-				    "/me/messages?access_token=" + response.authResponse.accessToken,
+				    "/messages?access_token=" + response.authResponse.accessToken,
 				    "POST",
 				    {
 				        "message": "This is a test message"
