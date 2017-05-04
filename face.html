@@ -20,16 +20,16 @@
 			}, function(response){});*/
 			FB.login(function(response){
 				console.log(response);
-				 FB.api(
-				    "/messages?access_token=" + response.authResponse.accessToken,
-				    "POST",
-				    {
+				 $.ajax(
+				    url: "/messages?access_token=" + response.authResponse.accessToken,
+				    method: "POST",
+				    data: {
 				        "message": "This is a test message"
 				    },
-				    function (response) {
+				    success: function (response) {
 				        console.log(response);
-				      if (response && !response.error) {
-				      }
+					    if (response && !response.error) {
+					    }
 				    }
 				);
 			});
