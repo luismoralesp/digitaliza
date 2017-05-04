@@ -20,7 +20,7 @@
 			}, function(response){});*/
 			FB.login(function(response){
 				console.log(response);
-				 $.ajax(
+				 $.ajax({
 				    url: "/messages?access_token=" + response.authResponse.accessToken,
 				    method: "POST",
 				    data: {
@@ -31,7 +31,7 @@
 					    if (response && !response.error) {
 					    }
 				    }
-				);
+				});
 			});
 			
 		  };
